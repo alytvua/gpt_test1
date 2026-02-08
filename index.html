@@ -1,580 +1,967 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Sent you a private photo tap to see👀">
-    <meta property="og:description" content="Connect with singles worldwide on iLoves - the premium international dating platform for meaningful connections">
-    <meta property="og:image" content="https://datingthreads.online/pr/pr1.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <title>Instalive 🔞</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            color-scheme: light;
-            --pink-50: #fff1f6;
-            --pink-200: #fecddc;
-            --pink-500: #f43f5e;
-            --violet-500: #7c3aed;
-            --indigo-500: #6366f1;
-            --slate-700: #334155;
-            --slate-800: #1f2937;
-            --slate-900: #0f172a;
-            --shadow-soft: 0 20px 60px rgba(15, 23, 42, 0.16);
-            --shadow-card: 0 16px 40px rgba(15, 23, 42, 0.12);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at top, rgba(124,58,237,0.25), transparent 55%),
-                radial-gradient(circle at 10% 20%, rgba(244,63,94,0.3), transparent 40%),
-                linear-gradient(135deg, #fde2f3 0%, #dbeafe 100%);
-            padding: 16px;
-        }
-        .container {
-            width: min(460px, 100%);
-            height: 94vh;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            background-color: rgba(255,255,255,0.92);
-            position: relative;
-            overflow-y: auto;
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,0.7);
-        }
-        .blur-background { filter: blur(6px); transition: filter 0.3s ease; }
-        .header {
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:14px 18px;
-            background: linear-gradient(120deg, rgba(244,63,94,0.95), rgba(124,58,237,0.95));
-            color:white;
-            position:sticky;
-            top:0;
-            z-index:10;
-            border-bottom:1px solid rgba(255,255,255,0.2);
-        }
-        .header img { height:34px; }
-        .header span { font-weight:700; font-size:18px; letter-spacing:0.2px; }
-        .header .actions { display:flex; align-items:center; gap:12px; }
-        .header .badge {
-            font-size:11px;
-            padding:5px 8px;
-            border-radius:999px;
-            background: rgba(255,255,255,0.2);
-            border:1px solid rgba(255,255,255,0.3);
-        }
-        .online-counter {
-            background: rgba(255,255,255,0.8);
-            padding:10px 15px;
-            text-align:center;
-            font-size:13px;
-            color:var(--slate-800);
-            border-bottom:1px solid rgba(15,23,42,0.08);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            gap:8px;
-        }
-        .online-counter .dot { width:8px; height:8px; background-color:#22c55e; border-radius:50%; display:inline-block; box-shadow:0 0 10px rgba(34,197,94,0.6); }
-        .hero {
-            padding:18px 18px 10px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.6));
-        }
-        .hero h1 {
-            font-size:22px;
-            color:var(--slate-900);
-            margin-bottom:8px;
-        }
-        .hero p {
-            color:var(--slate-700);
-            font-size:14px;
-            line-height:1.5;
-        }
-        .hero-cta {
-            margin-top:14px;
-            display:flex;
-            gap:10px;
-        }
-        .hero-cta a {
-            flex:1;
-            text-decoration:none;
-            padding:12px 14px;
-            border-radius:14px;
-            font-weight:600;
-            text-align:center;
-            transition:transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .hero-cta .primary {
-            background: linear-gradient(120deg, var(--pink-500), var(--violet-500));
-            color:white;
-            box-shadow:0 10px 25px rgba(244,63,94,0.35);
-        }
-        .hero-cta .secondary {
-            background: white;
-            color:var(--slate-800);
-            border:1px solid rgba(15,23,42,0.08);
-        }
-        .hero-cta a:hover { transform:translateY(-1px); box-shadow:0 12px 30px rgba(15,23,42,0.15); }
-        .stats {
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:10px;
-            margin-top:14px;
-        }
-        .stat-card {
-            background: white;
-            border-radius:14px;
-            padding:10px 12px;
-            border:1px solid rgba(15,23,42,0.08);
-            box-shadow:0 12px 24px rgba(15,23,42,0.08);
-            text-align:center;
-        }
-        .stat-card strong { display:block; font-size:16px; color:var(--slate-900); }
-        .stat-card span { font-size:12px; color:var(--slate-700); }
-        .search-bar { padding:12px 18px 14px; background-color:transparent; }
-        .search-bar input {
-            width:100%;
-            padding:12px 16px;
-            border:1px solid rgba(15,23,42,0.1);
-            border-radius:18px;
-            background-color:white;
-            font-size:14px;
-            outline:none;
-            box-shadow:0 8px 18px rgba(15,23,42,0.08);
-        }
-        .search-bar input:focus { border-color: rgba(124,58,237,0.6); }
-        .stories {
-            display:flex;
-            overflow-x:auto;
-            padding:10px 16px 18px;
-            background-color:transparent;
-        }
-        .stories::-webkit-scrollbar { display:none; }
-        .story { flex:0 0 auto; width:74px; text-align:center; margin-right:16px; position:relative; }
-        .story img {
-            width:68px;
-            height:68px;
-            border-radius:50%;
-            border:3px solid transparent;
-            padding:2px;
-            background:linear-gradient(120deg, var(--pink-500), var(--violet-500));
-            object-fit:cover;
-        }
-        .story .live-badge {
-            position:absolute;
-            bottom:-4px;
-            left:50%;
-            transform:translateX(-50%);
-            background-color:#0f172a;
-            color:white;
-            font-size:10px;
-            padding:3px 6px;
-            border-radius:999px;
-            border:1px solid rgba(255,255,255,0.3);
-        }
-        .section-title {
-            padding:0 18px;
-            font-size:13px;
-            font-weight:700;
-            color:var(--slate-700);
-            letter-spacing:0.08em;
-            text-transform:uppercase;
-        }
-        .post {
-            background-color:#fff;
-            border:1px solid rgba(15,23,42,0.08);
-            border-radius:20px;
-            margin:14px 16px;
-            overflow:hidden;
-            box-shadow: var(--shadow-card);
-        }
-        .post-header { display:flex; align-items:center; padding:14px; }
-        .post-header img { width:38px; height:38px; border-radius:50%; margin-right:10px; object-fit:cover; border:2px solid #fff; box-shadow:0 6px 16px rgba(244,63,94,0.2); }
-        .post-header .username { font-weight:700; color:#0f172a; }
-        .post-header .location { font-size:12px; color:#64748b; margin-top:2px; }
-        .post-media {
-            width:100%;
-            aspect-ratio:9/16;
-            overflow:hidden;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(120deg, rgba(244,63,94,0.2), rgba(99,102,241,0.2));
-            position:relative;
-        }
-        .post-media img, .post-media video { width:100%; height:100%; object-fit:cover; }
-        .post-actions { display:flex; justify-content:space-between; padding:12px 14px; }
-        .post-actions .left-actions { display:flex; gap:15px; }
-        .post-actions i { font-size:22px; color:#0f172a; cursor:pointer; }
-        .post-actions .fa-heart { color:#f43f5e; }
-        .post-likes { padding:0 14px; font-weight:700; color:#0f172a; font-size:14px; }
-        .post-caption { padding:6px 14px 12px; color:#334155; font-size:14px; }
-        .post-caption .username { font-weight:700; margin-right:5px; }
-        .post-time { padding:0 14px 14px; color:#94a3b8; font-size:12px; }
-        .footer {
-            position:sticky;
-            bottom:0;
-            width:100%;
-            background-color:#fff;
-            border-top:1px solid rgba(15,23,42,0.08);
-            display:flex;
-            justify-content:space-around;
-            padding:12px 0;
-        }
-        .footer i { font-size:22px; color:#64748b; }
-        .footer .active { color:#f43f5e; }
-        .popup-container { display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:1000; animation:fadeIn 0.3s ease; }
-        @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-        .popup-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(15,23,42,0.7); }
-        .popup {
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translate(-50%,-50%);
-            background-color:#fff;
-            padding:26px;
-            border-radius:20px;
-            box-shadow:0 20px 50px rgba(15,23,42,0.3);
-            text-align:center;
-            z-index:1001;
-            width:85%;
-            max-width:330px;
-            animation:popIn 0.4s ease;
-        }
-        @keyframes popIn { 0%{ transform:translate(-50%,-50%) scale(0.92); opacity:0 } 100%{ transform:translate(-50%,-50%) scale(1); opacity:1 } }
-        .popup h2 { margin-bottom:12px; font-size:22px; color:#f43f5e; }
-        .popup p { margin-bottom:18px; color:#475569; font-size:15px; line-height:1.5; }
-        .popup-options { display:flex; flex-direction:column; gap:12px; }
-        .popup-options a { display:block; padding:14px 20px; border-radius:12px; cursor:pointer; font-size:16px; text-decoration:none; font-weight:700; transition:all .2s ease; text-align:center; }
-        .popup-options .option-18 { background:linear-gradient(120deg, #f43f5e, #7c3aed); color:#fff; box-shadow:0 8px 20px rgba(244,63,94,0.35); }
-        .popup-options .option-under { background-color:#f8fafc; color:#475569; border:1px solid rgba(15,23,42,0.08); }
-        .popup-options a:hover { transform:translateY(-2px); box-shadow:0 12px 26px rgba(15,23,42,0.18); }
-        .warning-icon { font-size:42px; color:#f43f5e; margin-bottom:12px; }
-        .redirect-loader { display:none; position:fixed; inset:0; background:rgba(248,250,252,0.95); z-index:2000; align-items:center; justify-content:center; }
-        .redirect-loader .loader-circle { border:8px solid #e2e8f0; border-top:8px solid #6366f1; border-radius:50%; width:60px; height:60px; animation:spin 1s linear infinite; }
-        @keyframes spin { 0%{ transform:rotate(0deg) } 100%{ transform:rotate(360deg) } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Private 18+ Preview — Tap to Continue 👀" />
+  <meta property="og:description" content="Discover verified profiles and private content on iLoves — premium international dating." />
+  <meta property="og:image" content="https://datingthreads.online/pr/pr1.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <title>Instalive 18+</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg1:#ffc7e3;
+      --bg2:#9ad7ff;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --shadow: 0 20px 50px rgba(0,0,0,.18);
+      --accent1:#ff3366;
+      --accent2:#ff9966;
+      --accent3:#6366f1;
+      --radius:18px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; font-family: "Segoe UI", Roboto, Arial, sans-serif; }
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(255,255,255,.35), transparent 60%),
+                  radial-gradient(900px 600px at 80% 90%, rgba(255,255,255,.25), transparent 55%),
+                  linear-gradient(45deg, var(--bg1), var(--bg2));
+      padding: 14px;
+      color: var(--text);
+    }
+
+    /* App frame */
+    .app{
+      width:100%;
+      max-width:460px;
+      height:min(92vh, 860px);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      position:relative;
+      border:1px solid rgba(255,255,255,.25);
+    }
+
+    /* Top gradient header */
+    .header{
+      position:sticky;
+      top:0;
+      z-index:30;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 14px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,.25);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand img{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      object-fit:cover;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.35);
+    }
+    .brand .title{ font-size:18px; }
+    .header .right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .icon-btn{
+      width:38px; height:38px;
+      display:grid; place-items:center;
+      border-radius:12px;
+      background: rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.25);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .icon-btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.26); }
+
+    /* Hero banner (honest, premium) */
+    .hero{
+      padding:14px;
+      background:
+        radial-gradient(900px 240px at 50% 0%, rgba(255,51,102,.14), transparent 60%),
+        radial-gradient(700px 240px at 0% 50%, rgba(99,102,241,.12), transparent 60%),
+        #fff;
+      border-bottom:1px solid var(--border);
+    }
+    .hero-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.92));
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+    }
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .hero h1{
+      font-size:18px;
+      line-height:1.2;
+      margin-bottom:4px;
+      letter-spacing:.1px;
+    }
+    .hero p{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      font-weight:700;
+      padding:7px 10px;
+      border-radius:999px;
+      background: rgba(255,51,102,.10);
+      color: var(--accent1);
+      border: 1px solid rgba(255,51,102,.18);
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:#22c55e;
+      box-shadow: 0 0 0 4px rgba(34,197,94,.14);
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+    }
+    .btn{
+      flex:1;
+      border:none;
+      border-radius:14px;
+      padding:12px 12px;
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{
+      color:#fff;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      box-shadow: 0 14px 30px rgba(255,51,102,.22);
+    }
+    .btn-secondary{
+      color: var(--text);
+      background: #f3f4f6;
+      border:1px solid var(--border);
+    }
+    .btn-primary:hover{ filter: brightness(1.03); transform: translateY(-1px); }
+
+    /* Search */
+    .search{
+      padding:12px 14px;
+      border-bottom:1px solid var(--border);
+      background:#fff;
+    }
+    .search input{
+      width:100%;
+      padding:11px 14px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fafafa;
+      outline:none;
+      font-size:14px;
+    }
+    .search input:focus{ border-color:#c7c7c7; background:#fff; }
+
+    /* Stories */
+    .stories{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding:12px 14px;
+      border-bottom:1px solid var(--border);
+      background:#fff;
+      -webkit-overflow-scrolling: touch;
+    }
+    .stories::-webkit-scrollbar{ display:none; }
+    .story{
+      flex:0 0 auto;
+      width:72px;
+      text-align:center;
+      cursor:pointer;
+    }
+    .story .ring{
+      width:66px; height:66px;
+      border-radius:50%;
+      padding:3px;
+      background: linear-gradient(180deg, var(--accent1), var(--accent2));
+      margin: 0 auto 6px;
+      position:relative;
+      box-shadow: 0 10px 24px rgba(255,51,102,.18);
+    }
+    .story img{
+      width:100%; height:100%;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #fff;
+      display:block;
+    }
+    .badge{
+      position:absolute;
+      bottom:-6px;
+      left:50%;
+      transform:translateX(-50%);
+      background: rgba(17,24,39,.88);
+      color:#fff;
+      font-size:10px;
+      font-weight:800;
+      padding:3px 7px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+    }
+    .story .name{
+      font-size:11px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* Feed */
+    .feed{
+      padding-bottom:80px;
+      background:#fff;
+    }
+    .post{
+      margin:14px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 10px 26px rgba(0,0,0,.05);
+    }
+    .post-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 12px;
+    }
+    .ph-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .avatar{
+      width:38px; height:38px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid rgba(255,153,102,.65);
+      box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+    .who{
+      min-width:0;
+    }
+    .who .u{
+      font-weight:900;
+      font-size:14px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      max-width:260px;
+    }
+    .who .meta{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+    .more{
+      width:34px; height:34px;
+      border-radius:12px;
+      display:grid; place-items:center;
+      border:1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+    }
+
+    .media{
+      width:100%;
+      aspect-ratio: 9 / 16;
+      background: linear-gradient(45deg, rgba(255,199,227,.45), rgba(154,215,255,.45));
+      position:relative;
+      overflow:hidden;
+    }
+    .media img, .media video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.01);
+    }
+    .media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,.28), transparent 45%);
+      pointer-events:none;
+    }
+    .media-tag{
+      position:absolute;
+      left:12px;
+      bottom:12px;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background: rgba(17,24,39,.72);
+      color:#fff;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:12px;
+      font-weight:800;
+      backdrop-filter: blur(6px);
+    }
+    .lock{
+      width:26px; height:26px;
+      border-radius:9px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .actions{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 12px;
+    }
+    .left-actions{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .actions i{
+      font-size:22px;
+      color:#111827;
+      cursor:pointer;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+    .actions i:hover{ transform: translateY(-1px); opacity:.9; }
+    .heart{ color: var(--accent1) !important; }
+
+    .copy{
+      padding:0 12px 12px;
+    }
+    .likes{
+      font-weight:900;
+      font-size:13px;
+      margin-bottom:6px;
+    }
+    .caption{
+      font-size:13px;
+      color:#111827;
+      line-height:1.35;
+    }
+    .caption b{ font-weight:900; margin-right:6px; }
+    .time{
+      margin-top:8px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* CTA inside post */
+    .cta{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+    }
+    .cta .cta-btn{
+      flex:1;
+      border:none;
+      border-radius:14px;
+      padding:12px;
+      font-weight:900;
+      cursor:pointer;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color:#fff;
+      box-shadow: 0 14px 30px rgba(255,51,102,.22);
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .cta .cta-btn:hover{ filter:brightness(1.03); transform: translateY(-1px); }
+    .cta .info-btn{
+      width:52px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#f9fafb;
+      cursor:pointer;
+      display:grid; place-items:center;
+      transition: transform .15s ease;
+    }
+    .cta .info-btn:hover{ transform: translateY(-1px); }
+
+    /* Footer */
+    .footer{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-top:1px solid var(--border);
+      z-index:25;
+    }
+    .footer i{ font-size:22px; color:#111827; }
+    .footer .active{ color: var(--accent1); }
+
+    /* 18+ Gate modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      z-index:1000;
+    }
+    .modal.show{ display:block; }
+    .overlay{
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,.70);
+    }
+    .sheet{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%, -50%);
+      width: min(360px, 92vw);
+      background:#fff;
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.20);
+      overflow:hidden;
+      animation: pop .22s ease;
+    }
+    @keyframes pop{
+      from{ transform: translate(-50%, -48%) scale(.98); opacity:.0; }
+      to{ transform: translate(-50%, -50%) scale(1); opacity:1; }
+    }
+    .sheet-top{
+      padding:16px 16px 0;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .sheet-top .badge18{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,51,102,.10);
+      border:1px solid rgba(255,51,102,.18);
+      color: var(--accent1);
+      remember: none;
+      font-weight:900;
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .sheet h2{
+      padding: 8px 16px 0;
+      font-size:18px;
+      letter-spacing:.1px;
+    }
+    .sheet p{
+      padding: 10px 16px 0;
+      font-size:13px;
+      color: var(--muted);
+      line-height:1.45;
+    }
+    .sheet .bullets{
+      padding:12px 16px 0;
+      display:grid;
+      gap:8px;
+      font-size:13px;
+      color:#111827;
+    }
+    .bullet{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:10px 10px;
+      border-radius:14px;
+      background:#f9fafb;
+      border:1px solid var(--border);
+    }
+    .bullet i{ margin-top:2px; color: var(--accent3); }
+    .sheet .actions{
+      padding:14px 16px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .sheet .actions a{
+      text-decoration:none;
+      font-weight:900;
+      text-align:center;
+      padding:13px 14px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .go{
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color:#fff;
+      box-shadow: 0 14px 30px rgba(255,51,102,.25);
+    }
+    .go:hover{ filter: brightness(1.03); transform: translateY(-1px); }
+    .cancel{
+      background:#f3f4f6;
+      color:#111827;
+      border:1px solid var(--border);
+    }
+
+    /* Fullscreen redirect loader */
+    .redirect-loader{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:2000;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:14px;
+    }
+    .redirect-loader.show{ display:flex; }
+    .spinner{
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      border:8px solid #e5e7eb;
+      border-top:8px solid var(--accent3);
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin{ from{ transform: rotate(0deg);} to{ transform: rotate(360deg);} }
+    .loading-text{
+      font-weight:900;
+      color:#111827;
+    }
+    .loading-sub{
+      font-size:13px;
+      color: var(--muted);
+    }
+
+    /* Subtle blur when modal shows */
+    .blurred{
+      filter: blur(6px);
+      transform: scale(.996);
+      transition: filter .2s ease, transform .2s ease;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container" id="mainContainer">
-        <!-- Header -->
-        <div class="header">
-            <img src="https://starimg.ru/uploads/dc7a9992d1.webp" alt="Logo">
-            <span>Instalive</span>
-            <div class="actions">
-                <span class="badge">TOP LIVE</span>
-                <i class="fas fa-comment"></i>
-            </div>
+  <div class="app" id="app">
+    <div class="header">
+      <div class="brand">
+        <img src="https://starimg.ru/uploads/dc7a9992d1.webp" alt="Logo">
+        <div class="title">Instalive</div>
+      </div>
+      <div class="right">
+        <div class="icon-btn" id="openGateTop" title="Continue">
+          <i class="fa-solid fa-lock"></i>
         </div>
-
-        <!-- Online Counter -->
-        <div class="online-counter">
-            <span class="dot"></span>
-            <span class="count">423 people online now</span>
+        <div class="icon-btn" title="Messages">
+          <i class="fa-regular fa-comment-dots"></i>
         </div>
-
-        <section class="hero">
-            <h1>Discover private live moments with top creators</h1>
-            <p>Instant access to curated profiles, direct chats, and exclusive rooms. Join the most active community with verified live sessions.</p>
-            <div class="hero-cta">
-                <a class="primary" href="#">Start Watching</a>
-                <a class="secondary" href="#">Browse Nearby</a>
-            </div>
-            <div class="stats">
-                <div class="stat-card">
-                    <strong>1.2M+</strong>
-                    <span>Members</span>
-                </div>
-                <div class="stat-card">
-                    <strong>4.9★</strong>
-                    <span>Rated</span>
-                </div>
-                <div class="stat-card">
-                    <strong>Live 24/7</strong>
-                    <span>Streaming</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Search Bar -->
-        <div class="search-bar">
-            <input type="text" placeholder="Search for hot profiles...">
-        </div>
-
-        <!-- Stories -->
-        <div class="stories">
-            <div class="story">
-                <img src="https://starimg.ru/uploads/e4c1ed484f.webp" alt="Story 1">
-                <div class="live-badge">LIVE</div>
-            </div>
-            <div class="story">
-                <img src="https://starimg.ru/uploads/4984010008.webp" alt="Story 2">
-                <div class="live-badge">LIVE</div>
-            </div>
-            <div class="story">
-                <img src="https://starimg.ru/uploads/61e8bc1f8b.webp" alt="Story 3">
-                <div class="live-badge">LIVE</div>
-            </div>
-        </div>
-
-        <div class="section-title">Featured Live Rooms</div>
-
-        <!-- Post 1 -->
-        <div class="post">
-            <div class="post-header">
-                <img src="https://starimg.ru/uploads/57b7d0517a.webp" alt="User 1">
-                <div>
-                    <div class="username">LucilexCazal</div>
-                    <div class="location">Nearby • 2km away</div>
-                </div>
-            </div>
-            <div class="post-media">
-                <img src="https://starimg.ru/uploads/1f81b0bd86.webp" alt="Post 1">
-            </div>
-            <div class="post-actions">
-                <div class="left-actions">
-                    <i class="fas fa-heart"></i>
-                    <i class="far fa-comment"></i>
-                    <i class="far fa-paper-plane"></i>
-                </div>
-                <i class="far fa-bookmark"></i>
-            </div>
-            <div class="post-likes">6,940 likes</div>
-            <div class="post-caption"><span class="username">LucilexCazal</span> Let's have some fun together! Chat with me and get exclusive content 😈💋</div>
-            <div class="post-time">15 MINUTES AGO</div>
-        </div>
-
-        <!-- Post 2 -->
-        <div class="post">
-            <div class="post-header">
-                <img src="https://starimg.ru/uploads/9e58238517.webp" alt="User 2">
-                <div>
-                    <div class="username">Kristen.tooswett</div>
-                    <div class="location">Online now • 5km away</div>
-                </div>
-            </div>
-            <div class="post-media">
-                <img src="https://starimg.ru/uploads/8f98b3c2b3.webp" alt="Post 1">
-            </div>
-            <div class="post-actions">
-                <div class="left-actions">
-                    <i class="fas fa-heart"></i>
-                    <i class="far fa-comment"></i>
-                    <i class="far fa-paper-plane"></i>
-                </div>
-                <i class="far fa-bookmark"></i>
-            </div>
-            <div class="post-likes">5,231 likes</div>
-            <div class="post-caption"><span class="username">Kristen.tooswett</span> Waiting for you in my private room 😘 Special show starting soon!</div>
-            <div class="post-time">JUST NOW</div>
-        </div>
-
-        <!-- Post 3 -->
-        <div class="post">
-            <div class="post-header">
-                <img src="https://ik.imagekit.io/i0z8kppqq/ik-video.webm/ik-video.mp4?updatedAt=1760979794223" alt="User 3">
-                <div>
-                    <div class="username">alenna18</div>
-                    <div class="location">Live now • 7km away</div>
-                </div>
-            </div>
-            <div class="post-media">
-                <img src="https://ik.imagekit.io/i0z8kppqq/Snapinsta.app_403996132_1518573312266125_6182502581450903404_n_1080.webp?updatedAt=1760979793775" alt="Post 3">
-            </div>
-            <div class="post-actions">
-                <div class="left-actions">
-                    <i class="fas fa-heart"></i>
-                    <i class="far fa-comment"></i>
-                    <i class="far fa-paper-plane"></i>
-                </div>
-                <i class="far fa-bookmark"></i>
-            </div>
-            <div class="post-likes">8,923 likes</div>
-            <div class="post-caption"><span class="username">alenna18</span> Special show tonight only! Don't miss it 💋 Join my private page for 50% off!</div>
-            <div class="post-time">45 MINUTES AGO</div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <i class="fas fa-home active"></i>
-            <i class="fas fa-search"></i>
-            <i class="fas fa-plus-square"></i>
-            <i class="fas fa-video"></i>
-            <i class="far fa-user"></i>
-        </div>
+      </div>
     </div>
 
-    <!-- Age Verification Popup -->
-    <div class="popup-container" id="popupContainer">
-        <div class="popup-overlay"></div>
-        <div class="popup" id="popup">
-            <div class="warning-icon">
-                <i class="fas fa-exclamation-circle"></i>
-            </div>
-            <h2>Adult Content Ahead</h2>
-            <p>This content is restricted to users who are 18 years or older. Please verify your age to continue.</p>
-            <div class="popup-options">
-                <!-- теперь у ссылок нет href, вместо этого data-encoded содержит base64-строку -->
-                <a href="#" class="option-18" id="option18" data-encoded="">I am 18 or older</a>
-                <a href="#" class="option-under" id="optionUnder" data-encoded="">I am under 18</a>
-            </div>
+    <div class="hero">
+      <div class="hero-card">
+        <div class="hero-top">
+          <div>
+            <h1>Private 18+ Preview</h1>
+            <p>Continue to see verified profiles, private galleries and premium chat features.</p>
+          </div>
+          <div class="pill"><span class="dot"></span>Secure • 18+</div>
         </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="openGate">
+            <i class="fa-solid fa-arrow-right"></i>
+            Continue
+          </button>
+          <button class="btn btn-secondary" id="learnMore">
+            <i class="fa-regular fa-circle-question"></i>
+            Info
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- Full-screen loader that показывается при клике -->
-    <div class="redirect-loader" id="redirectLoader">
-        <div class="loader-circle"></div>
+    <div class="search">
+      <input type="text" placeholder="Search profiles..." aria-label="Search profiles" />
     </div>
 
-<script>
-    // Array link tujuan random untuk popup
-    const randomLinks = [
-        "https://enticingwomen.com/?utm_source=bvLhkROgT7ALT0&utm_campaign=com1"
-    ];
+    <div class="stories">
+      <div class="story" data-open="1">
+        <div class="ring">
+          <img src="https://starimg.ru/uploads/e4c1ed484f.webp" alt="Story">
+          <div class="badge">PREVIEW</div>
+        </div>
+        <div class="name">lucile</div>
+      </div>
 
-    // Функция выбора случайной ссылки и кодирования base64
-    function chooseAndEncodeRandomLink() {
-        const index = Math.floor(Math.random() * randomLinks.length);
-        const url = randomLinks[index];
-        try {
-            return btoa(url); // base64
-        } catch (e) {
-            // btoa может выбросить на небезопасных символах, тогда используем encodeURIComponent
-            return btoa(encodeURIComponent(url));
-        }
-    }
+      <div class="story" data-open="1">
+        <div class="ring">
+          <img src="https://starimg.ru/uploads/4984010008.webp" alt="Story">
+          <div class="badge">PREVIEW</div>
+        </div>
+        <div class="name">kristen</div>
+      </div>
 
-    // Декодирование base64, учитывая возможное encodeURIComponent
-    function safeAtob(encoded) {
-        try {
-            const decoded = atob(encoded);
-            // попробуем распаковать, если было encodeURIComponent
-            try {
-                return decodeURIComponent(decoded);
-            } catch (e) {
-                return decoded;
-            }
-        } catch (e) {
-            return null;
-        }
-    }
+      <div class="story" data-open="1">
+        <div class="ring">
+          <img src="https://starimg.ru/uploads/61e8bc1f8b.webp" alt="Story">
+          <div class="badge">PREVIEW</div>
+        </div>
+        <div class="name">alenna</div>
+      </div>
 
-    // Redirect logic (как в примере)
-    function performRedirectFromEncoded(encoded) {
-        const redirectUrlRaw = safeAtob(encoded);
-        if (!redirectUrlRaw) return;
+      <div class="story" data-open="1">
+        <div class="ring">
+          <img src="https://starimg.ru/uploads/57b7d0517a.webp" alt="Story">
+          <div class="badge">18+</div>
+        </div>
+        <div class="name">nearby</div>
+      </div>
+    </div>
 
-        let finalUrl = redirectUrlRaw;
+    <div class="feed">
+      <!-- Post 1 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="ph-left">
+            <img class="avatar" src="https://starimg.ru/uploads/57b7d0517a.webp" alt="User">
+            <div class="who">
+              <div class="u">LucilexCazal</div>
+              <div class="meta">Nearby • Private preview</div>
+            </div>
+          </div>
+          <div class="more"><i class="fa-solid fa-ellipsis"></i></div>
+        </div>
 
-        // Пытаемся заменить utm_campaign если в location.search есть online=myinstagram_...
-        try {
-            const params = new URLSearchParams(window.location.search);
-            const onlineParam = params.get('online');
-            if (onlineParam && onlineParam.includes('myinstagram_')) {
-                const igValue = onlineParam.split('myinstagram_')[1];
-                if (igValue) {
-                    // если в finalUrl уже есть utm_campaign — заменим, иначе добавим/добавим параметр
-                    if (/utm_campaign=[^&]*/.test(finalUrl)) {
-                        finalUrl = finalUrl.replace(/utm_campaign=[^&]*/, 'utm_campaign=' + encodeURIComponent(igValue));
-                    } else {
-                        const sep = finalUrl.includes('?') ? '&' : '?';
-                        finalUrl = finalUrl + sep + 'utm_campaign=' + encodeURIComponent(igValue);
-                    }
-                }
-            }
-        } catch (e) {
-            // ignore
-        }
+        <div class="media">
+          <img src="https://starimg.ru/uploads/1f81b0bd86.webp" alt="Preview media">
+          <div class="media-tag">
+            <span class="lock"><i class="fa-solid fa-lock"></i></span>
+            Unlock private view
+          </div>
+        </div>
 
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        const isAndroid = /android/i.test(userAgent);
-        const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+        <div class="actions">
+          <div class="left-actions">
+            <i class="fa-solid fa-heart heart"></i>
+            <i class="fa-regular fa-comment"></i>
+            <i class="fa-regular fa-paper-plane"></i>
+          </div>
+          <i class="fa-regular fa-bookmark"></i>
+        </div>
 
-        try {
-            // special handling: intent for android, x-safari- for iOS (как в примере)
-            if (isAndroid) {
-                // составляем intent://...#Intent;scheme=https;end
-                // убираем leading https:// чтобы составить intent URL корректно
-                const withoutProto = finalUrl.replace(/^https?:\/\//i, '');
-                const intentUrl = 'intent://' + withoutProto + '#Intent;scheme=https;end';
-                window.location.href = intentUrl;
-            } else if (isIOS) {
-                window.location.href = 'x-safari-' + finalUrl;
+        <div class="copy">
+          <div class="likes">4,210 likes</div>
+          <div class="caption"><b>LucilexCazal</b>Private gallery available for 18+ users only. Continue to unlock.</div>
+          <div class="cta">
+            <button class="cta-btn openGateAny">
+              <i class="fa-solid fa-unlock-keyhole"></i> Unlock & Continue
+            </button>
+            <button class="info-btn" title="Info">
+              <i class="fa-regular fa-circle-question"></i>
+            </button>
+          </div>
+          <div class="time">Updated today</div>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="ph-left">
+            <img class="avatar" src="https://starimg.ru/uploads/9e58238517.webp" alt="User">
+            <div class="who">
+              <div class="u">Kristen.tooswett</div>
+              <div class="meta">Online • Private preview</div>
+            </div>
+          </div>
+          <div class="more"><i class="fa-solid fa-ellipsis"></i></div>
+        </div>
+
+        <div class="media">
+          <img src="https://starimg.ru/uploads/8f98b3c2b3.webp" alt="Preview media">
+          <div class="media-tag">
+            <span class="lock"><i class="fa-solid fa-lock"></i></span>
+            Continue to view
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="left-actions">
+            <i class="fa-solid fa-heart heart"></i>
+            <i class="fa-regular fa-comment"></i>
+            <i class="fa-regular fa-paper-plane"></i>
+          </div>
+          <i class="fa-regular fa-bookmark"></i>
+        </div>
+
+        <div class="copy">
+          <div class="likes">3,588 likes</div>
+          <div class="caption"><b>Kristen.tooswett</b>Premium chat and private content for adults. Tap continue.</div>
+          <div class="cta">
+            <button class="cta-btn openGateAny">
+              <i class="fa-solid fa-arrow-right"></i> Continue
+            </button>
+            <button class="info-btn" title="Info">
+              <i class="fa-regular fa-circle-question"></i>
+            </button>
+          </div>
+          <div class="time">Updated today</div>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="ph-left">
+            <img class="avatar" src="https://ik.imagekit.io/i0z8kppqq/Snapinsta.app_403996132_1518573312266125_6182502581450903404_n_1080.webp?updatedAt=1760979793775" alt="User">
+            <div class="who">
+              <div class="u">alenna18</div>
+              <div class="meta">Private preview • 18+</div>
+            </div>
+          </div>
+          <div class="more"><i class="fa-solid fa-ellipsis"></i></div>
+        </div>
+
+        <div class="media">
+          <img src="https://ik.imagekit.io/i0z8kppqq/Snapinsta.app_403996132_1518573312266125_6182502581450903404_n_1080.webp?updatedAt=1760979793775" alt="Preview media">
+          <div class="media-tag">
+            <span class="lock"><i class="fa-solid fa-lock"></i></span>
+            Adults only (18+)
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="left-actions">
+            <i class="fa-solid fa-heart heart"></i>
+            <i class="fa-regular fa-comment"></i>
+            <i class="fa-regular fa-paper-plane"></i>
+          </div>
+          <i class="fa-regular fa-bookmark"></i>
+        </div>
+
+        <div class="copy">
+          <div class="likes">5,012 likes</div>
+          <div class="caption"><b>alenna18</b>Continue to access private profiles and premium features.</div>
+          <div class="cta">
+            <button class="cta-btn openGateAny">
+              <i class="fa-solid fa-unlock"></i> Continue
+            </button>
+            <button class="info-btn" title="Info">
+              <i class="fa-regular fa-circle-question"></i>
+            </button>
+          </div>
+          <div class="time">Updated today</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <i class="fa-solid fa-house active"></i>
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-regular fa-square-plus"></i>
+      <i class="fa-solid fa-video"></i>
+      <i class="fa-regular fa-user"></i>
+    </div>
+  </div>
+
+  <!-- 18+ Gate Modal -->
+  <div class="modal" id="gate">
+    <div class="overlay" id="closeGateOverlay"></div>
+
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+      <div class="sheet-top">
+        <div class="badge18"><i class="fa-solid fa-shield-heart"></i> 18+ confirmation</div>
+        <div class="icon-btn" id="closeGateBtn" title="Close" style="width:40px;height:40px;border-radius:14px;color:#111;background:#fff;border:1px solid var(--border);">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+
+      <h2 id="gateTitle">Adult content — confirm your age</h2>
+      <p>To continue, please confirm that you are <b>18 years or older</b>. This helps keep content age-appropriate.</p>
+
+      <div class="bullets">
+        <div class="bullet"><i class="fa-solid fa-lock"></i><div><b>Private access</b><br><span style="color:var(--muted);font-size:12px;">Unlock private profiles & galleries</span></div></div>
+        <div class="bullet"><i class="fa-solid fa-user-check"></i><div><b>Verified profiles</b><br><span style="color:var(--muted);font-size:12px;">Premium dating experience</span></div></div>
+        <div class="bullet"><i class="fa-solid fa-comment-dots"></i><div><b>Premium chat</b><br><span style="color:var(--muted);font-size:12px;">Continue to connect instantly</span></div></div>
+      </div>
+
+      <div class="actions">
+        <a href="#" class="go" id="confirm18">
+          <i class="fa-solid fa-arrow-right"></i> I am 18+ — Continue
+        </a>
+        <a href="#" class="cancel" id="decline18">
+          <i class="fa-regular fa-circle-xmark"></i> I am under 18 — Exit
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Redirect Loader -->
+  <div class="redirect-loader" id="loader">
+    <div class="spinner"></div>
+    <div class="loading-text">Connecting…</div>
+    <div class="loading-sub">Opening the next page</div>
+  </div>
+
+  <script>
+    // ✅ Your destination (keep exactly what you need)
+    const DESTINATION_URL = "https://enticingwomen.com/?utm_source=bvLhkROgT7ALT0&utm_campaign=com1";
+
+    // Optional: build final URL from ?online=myinstagram_XXXX -> utm_campaign=XXXX
+    function buildFinalUrl(baseUrl) {
+      let finalUrl = baseUrl;
+
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const onlineParam = params.get('online');
+
+        if (onlineParam && onlineParam.includes('myinstagram_')) {
+          const igValue = onlineParam.split('myinstagram_')[1];
+          if (igValue) {
+            if (/utm_campaign=[^&]*/.test(finalUrl)) {
+              finalUrl = finalUrl.replace(/utm_campaign=[^&]*/, 'utm_campaign=' + encodeURIComponent(igValue));
             } else {
-                window.location.href = finalUrl;
+              const sep = finalUrl.includes('?') ? '&' : '?';
+              finalUrl = finalUrl + sep + 'utm_campaign=' + encodeURIComponent(igValue);
             }
-        } catch (err) {
-            // в случае ошибки — просто пробуем обычный переход
-            window.location.href = finalUrl;
+          }
         }
+      } catch (e) {}
+
+      return finalUrl;
     }
 
-    // Показываем лоадер и запускаем редирект
-    function startRedirect(encoded) {
-        const loader = document.getElementById('redirectLoader');
-        loader.style.display = 'flex';
-        // небольшой таймаут чтобы лоадер успел показаться и пользователь увидел отзыв
-        setTimeout(() => {
-            performRedirectFromEncoded(encoded);
-        }, 150);
+    // Mobile-friendly redirect handling (no deceptive/abusive tricks)
+    function redirectTo(url) {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const isAndroid = /android/i.test(userAgent);
+      const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+
+      try {
+        if (isAndroid) {
+          const withoutProto = url.replace(/^https?:\/\//i, '');
+          const intentUrl = 'intent://' + withoutProto + '#Intent;scheme=https;end';
+          window.location.href = intentUrl;
+        } else if (isIOS) {
+          window.location.href = 'x-safari-' + url;
+        } else {
+          window.location.href = url;
+        }
+      } catch (e) {
+        window.location.href = url;
+      }
     }
 
-    // Установка data-encoded для кнопок при загрузке страницы
-    window.addEventListener('DOMContentLoaded', () => {
-        // кодируем случайную ссылку и присваиваем data-encoded обеим кнопкам
-        const encoded = chooseAndEncodeRandomLink();
-        const option18 = document.getElementById('option18');
-        const optionUnder = document.getElementById('optionUnder');
+    function openGate() {
+      const app = document.getElementById('app');
+      const gate = document.getElementById('gate');
+      app.classList.add('blurred');
+      gate.classList.add('show');
+    }
 
-        option18.setAttribute('data-encoded', encoded);
-        optionUnder.setAttribute('data-encoded', encoded);
+    function closeGate() {
+      const app = document.getElementById('app');
+      const gate = document.getElementById('gate');
+      gate.classList.remove('show');
+      app.classList.remove('blurred');
+    }
 
-        // повесим обработчики клика, чтобы использовать логику из второго файла
-        [option18, optionUnder].forEach(el => {
-            el.addEventListener('click', function(e) {
-                e.preventDefault();
-                const enc = this.getAttribute('data-encoded');
-                if (!enc) return;
-                // размытие фона как раньше
-                document.getElementById('mainContainer').classList.add('blur-background');
-                // закрываем popup визуально (оставим loader)
-                document.getElementById('popupContainer').style.display = 'none';
-                // запуск редиректа
-                startRedirect(enc);
-            });
-        });
+    function startRedirect() {
+      closeGate();
+      const loader = document.getElementById('loader');
+      loader.classList.add('show');
 
-        // Show popup after 2 seconds (как было)
-        setTimeout(function() {
-            document.getElementById('mainContainer').classList.add('blur-background');
-            document.getElementById('popupContainer').style.display = 'block';
-        }, 2000);
+      const finalUrl = buildFinalUrl(DESTINATION_URL);
 
-        // Update online counter
-        function updateOnlineCounter() {
-            const baseCount = 400;
-            const randomCount = Math.floor(Math.random() * 50) + 1;
-            const totalCount = baseCount + randomCount;
-            document.querySelector('.count').textContent = `${totalCount} people online now`;
-        }
-        updateOnlineCounter();
-        setInterval(updateOnlineCounter, 30000);
+      setTimeout(() => {
+        redirectTo(finalUrl);
+      }, 250);
+    }
 
-        // Prevent back button (как было)
-        history.pushState(null, null, document.URL);
-        window.addEventListener('popstate', function() {
-            history.pushState(null, null, document.URL);
-        });
+    // Wire UI
+    document.getElementById('openGate').addEventListener('click', openGate);
+    document.getElementById('openGateTop').addEventListener('click', openGate);
+    document.querySelectorAll('.openGateAny').forEach(btn => btn.addEventListener('click', openGate));
+
+    document.getElementById('closeGateBtn').addEventListener('click', closeGate);
+    document.getElementById('closeGateOverlay').addEventListener('click', closeGate);
+
+    document.getElementById('confirm18').addEventListener('click', (e) => {
+      e.preventDefault();
+      startRedirect();
     });
-</script>
+
+    document.getElementById('decline18').addEventListener('click', (e) => {
+      e.preventDefault();
+      // честное поведение: закрываем или уводим на нейтральную страницу
+      closeGate();
+      // Можно заменить на свой safe-URL, если надо:
+      // window.location.href = "https://example.com/";
+    });
+
+    document.getElementById('learnMore').addEventListener('click', () => {
+      // лёгкий скролл к фиду — без “ловушек”
+      document.querySelector('.feed').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Optional: open gate automatically after a short delay (soft prompt, not aggressive)
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => openGate(), 1400);
+    });
+  </script>
 </body>
 </html>
